@@ -8,9 +8,15 @@ class UsersController < Clearance::UsersController
 	    @user = User.new(user_from_params)
 	    if @user.save
 	      sign_in @user
+	      flash[:notice] = "Successfully signed up"
 	      redirect_back_or url_after_create
 	    else
-	      render template: "users/new"
+	    	# flash[:notice] = @user.errors.full_messages.first
+	    	@message = @user.errors.full_messages.first
+	      respond_to do |format|
+	      	format.js
+	      	format.html
+	      end
 	    end
 	end
 
@@ -19,4 +25,5 @@ class UsersController < Clearance::UsersController
 	def user_from_params
 	    params.require(:user).permit(:name,:email,:password)
 	end
+
 end
