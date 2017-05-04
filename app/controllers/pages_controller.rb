@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
 	def index
-		flash[:notice]
+		@listings = Listing.page params[:page]
 	end
 end

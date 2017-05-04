@@ -1,0 +1,16 @@
+<div class="col-md-10 col-sm-10">
+<div class="row" id ="row">
+<% @listings.each do |list|%>
+
+<div class="all_listing well col-xs-12 col-sm-4 col-md-2" id="/listings/<%=list.id%>" style="cursor:pointer">
+	RM<%=list.price%>&nbsp;
+	<%=list.name%><br>
+	<%=list.city+", "+list.state+", "+list.country%><br>
+	<%=list.place_type%>
+	&nbsp;
+	<%=bed_no(list)%> 
+</div>
+
+<%end%>
+</div>
+</div>

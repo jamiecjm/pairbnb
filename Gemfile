@@ -54,3 +54,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'clearance'
 gem "figaro"
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'faker'
+gem 'carrierwave', '~> 1.0'
+gem 'kaminari'
+gem 'fog'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'

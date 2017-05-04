@@ -1,0 +1,54 @@
+<%= render partial: 'carousel' %>
+
+<h1><%=@listing.name%></h1>
+<%=@listing.city+", "+@listing.state+", "+@listing.country%><br>
+<%=@listing.place_type%>&nbsp;
+<%=guest_no(@listing)%>&nbsp;
+<%=room_no(@listing)%>&nbsp;
+<%=bed_no(@listing)%>
+<h3>About this listing</h3>
+<p><%=@listing.description%></p>
+<button data-toggle="modal" data-target="#myModal" class="btn btn-default">Book Now!</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Place a Booking</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: '/reservations/form',locals: {reserve: Reservation.new} %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%= javascript_tag do%>
+  $('#datepicker').datepicker({
+    dateFormat: "yy-mm-dd",
+    minDate: new Date(),
+    beforeShowDay: function(date){
+      var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+      return [ <%=raw @listing.booked_dates%>.indexOf(string) == -1 ]
+    },
+    onSelect: function(date){
+      $("#datepicker2").datepicker('option','minDate',date)
+    }
+  });
+
+  $('#datepicker2').datepicker({
+    dateFormat: "yy-mm-dd",
+    beforeShowDay: function(date){
+      var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+      return [ <%=raw @listing.booked_dates%>.indexOf(string) == -1 ]
+    }
+  });
+<%end%>

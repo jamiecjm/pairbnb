@@ -1,0 +1,69 @@
+<div class="form-group">
+  <%= form.label :name %>
+  <%= form.text_field :name,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :description %>
+  <%= form.text_area :description,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :country %>
+  <%= form.text_field :country,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :state %>
+  <%= form.text_field :state,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :city %>
+  <%= form.text_field :city,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :zipcode %>
+  <%= form.number_field :zipcode,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :street %>
+  <%= form.text_field :street,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :room_type %>
+  <%= form.select :place_type, options_for_select([["Select Room Type",""]]+Listing.place_types.to_a) ,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :property_type %>
+  <%= form.select :property_type, options_for_select([["Select Property Type",""]]+ Listing.all.pluck(:property_type).uniq) ,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :number_of_guests %>
+  <%= form.number_field :guest_no,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :number_of_rooms %>
+  <%= form.number_field :room_no,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :number_of_beds %>
+  <%= form.number_field :bed_no,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :price %>
+  <%= form.number_field :price,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :listing_pictures %>
+  <%= form.file_field :avatars,multiple: true,class: "form-control" %>
+</div>

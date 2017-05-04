@@ -1,0 +1,46 @@
+<div class="new_listing_page">
+<h2><%= t("New listing") %></h2>
+
+<%= form_for @listing,remote: true do |form|%>
+<%= render partial: '/listings/form', object: form %>
+
+
+
+<%= form.fields_for :tag, :label => false do |f|%>
+Amenities
+<%Tag.where(tagtype: "Amenities").each do |tag|%>
+	<div>
+	<%= f.check_box tag.name.to_sym%>
+	<%= f.label tag.name%>
+	</div>
+<%end%>
+Facilities
+<%Tag.where(tagtype: "Facilities").each do |tag|%>
+	<div>
+	<%= f.check_box tag.name.to_sym%>
+	<%= f.label tag.name%>
+	</div>
+<%end%>
+House Rules
+<%Tag.where(tagtype: "House Rules").each do |tag|%>
+	<div>
+	<%= f.check_box tag.name.to_sym%>
+	<%= f.label tag.name%>
+	</div>
+<%end%>
+Host Language
+<%Tag.where(tagtype: "Host Language").each do |tag|%>
+	<div>
+	<%= f.check_box tag.name.to_sym%>
+	<%= f.label tag.name%>
+	</div>
+<%end%>
+
+
+
+<div class="submit-field">
+  <%= form.submit "Create a new listing",class: "btn btn-default"%>
+</div>
+<%end%>
+<% end %>
+</div>

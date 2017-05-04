@@ -12,7 +12,7 @@ class UsersController < Clearance::UsersController
 	      redirect_back_or url_after_create
 	    else
 	    	# flash[:notice] = @user.errors.full_messages.first
-	    	@message = @user.errors.full_messages.first
+	      @message = @user.errors.full_messages.first
 	      respond_to do |format|
 	      	format.js
 	      	format.html
@@ -20,10 +20,14 @@ class UsersController < Clearance::UsersController
 	    end
 	end
 
+	def show
+		
+	end
+
 	private
 
 	def user_from_params
-	    params.require(:user).permit(:name,:email,:password)
+	    params.require(:user).permit(:name,:email,:password,:avatar)
 	end
 
 end

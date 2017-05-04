@@ -1,0 +1,36 @@
+<%=form_tag ('/tags/filters') do %>
+
+	<%= select_tag "room_type", options_for_select([["Select Room Type",""]]+Listing.place_types.to_a),role: "button",class: "btn btn-default" %><br>
+
+	Amenities
+	<%Tag.where(tagtype: "Amenities").each do |tag|%>
+		<div>
+		<%= check_box_tag tag.name.to_sym%>
+		<%= label_tag tag.name%>
+		</div>
+	<%end%>
+
+	Facilities
+	<%Tag.where(tagtype: "Facilities").each do |tag|%>
+		<div>
+		<%= check_box_tag tag.name.to_sym%>
+		<%= label_tag tag.name%>
+		</div>
+	<%end%>
+
+	House Rules
+	<%Tag.where(tagtype: "House Rules").each do |tag|%>
+		<div>
+		<%= check_box_tag tag.name.to_sym%>
+		<%= label_tag tag.name%>
+		</div>
+	<%end%>
+
+	Host Language
+	<%Tag.where(tagtype: "Host Language").each do |tag|%>
+		<div>
+		<%= check_box_tag tag.name.to_sym%>
+		<%= label_tag tag.name%>
+		</div>
+	<%end%>
+<%end%>

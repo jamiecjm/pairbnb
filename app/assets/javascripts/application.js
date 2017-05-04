@@ -11,7 +11,24 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+document.addEventListener("turbolinks:load",function(){
+	// $("input[value=Find]").hide()
+
+	$(document.body).on("click",".all_listing",function(){
+		window.location = $(this).attr("id")
+	})
+
+	$("#search").keyup(function(){
+		$("input[value=Find]").click()
+	})	
+
+
+})
+

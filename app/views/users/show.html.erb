@@ -1,0 +1,29 @@
+<%=current_user.name%><br><br>
+
+Your listings:<br><br>
+<% current_user.listings.each do |list|%>
+<div class="all_listing" id="/listings/<%=list.id%>" style="cursor:pointer">
+	RM<%=list.price%>&nbsp;
+	<%=list.name%><br>
+	<%=list.city+", "+list.state+", "+list.country%><br>
+	<%=list.place_type%>
+	&nbsp;
+	<%=bed_no(list)%> 
+</div>
+	<br>
+<%end%>
+
+
+Your bookings:<br><br>
+<% current_user.reservations.each do |reserve|%>
+	Start date: <%=reserve.start_date%>&nbsp;
+	End date: <%=reserve.end_date%><br>
+	<%property = reserve.listing%>
+	RM<%=property.price%>&nbsp;
+	<%=property.name%><br>
+	<%=property.city+", "+property.state+", "+property.country%><br>
+	<%=property.place_type%>&nbsp;
+	<%=bed_no(property)%> 
+</div>
+	<br><br>
+<%end%>

@@ -1,2 +1,34 @@
+@import "jquery-ui/core.css";
+@import "jquery-ui/theme.css";
+@import "jquery-ui/datepicker.css";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+#flash {
+	position:fixed;
+  width:100%;
+  margin-top:-40px;
+}
+
+.all_listing {
+  margin-top: 10px;
+}
+
+.container {
+	width:100%;
+  margin-top:100px;
+}
+
+#row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
